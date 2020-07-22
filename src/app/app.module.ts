@@ -14,16 +14,21 @@ import { SamHeaderModule } from './common/sam-header/sam-header.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SimulationFormComponent } from './simulation-form/simulation-form.component';
-import { FormsModule } from '@angular/forms';
-import { ExecFormComponent } from './simulation-form/exec-form/exec-form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
+import {SdsPageModule, SdsToolbarModule, SdsAccordionModule} from '@gsa-sam/components';
+import { FormlyModule } from '@ngx-formly/core';
+import { CommonModule } from '@angular/common';
+import { SdsFormlyModule } from '@gsa-sam/sam-formly';
+import { RepeatTypeComponent } from './repeat-section.type';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SimulationFormComponent,
-    ExecFormComponent,
-    HomePageComponent
+    HomePageComponent,
+    RepeatTypeComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -32,7 +37,21 @@ import { HomePageComponent } from './home-page/home-page.component';
     SamFooterModule,
     SamHeaderModule,
     AppRoutingModule,
-    FormsModule
+    SdsPageModule,
+    SdsToolbarModule,
+    SdsAccordionModule,
+    SdsFormlyModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    FormlyModule.forRoot({
+      types: [
+        { name: 'repeat', component: RepeatTypeComponent },
+      ],
+      validationMessages: [
+        { name: 'required', message: 'This field is required' },
+      ],
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
