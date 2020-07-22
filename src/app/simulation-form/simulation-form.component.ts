@@ -16,9 +16,6 @@ export class SimulationFormComponent {
     authHeaders: [{}],
   };
   options: FormlyFormOptions = {
-    // formState: {
-    //   awesomeIsForced: false,
-    // },
   };
   fields: FormlyFieldConfig[] = [
     {
@@ -28,6 +25,9 @@ export class SimulationFormComponent {
         label: 'Simulation Name',
         //placeholder: 'Formly is terrific!',
         required: true,
+        // attributes: {
+        //   style: 'padding: 10px, 0px, 10px'
+        // }
       },
     },
     {
@@ -35,7 +35,6 @@ export class SimulationFormComponent {
       type: 'input',
       templateOptions: {
         label: 'Base URL',
-        //placeholder: 'Formly is terrific!',
         required: true,
       },
     },
@@ -44,9 +43,12 @@ export class SimulationFormComponent {
       type: 'input',
       templateOptions: {
         label: 'Scenario Name',
-        //placeholder: 'Formly is terrific!',
         required: true,
       },
+    },
+    {
+      className: 'section-label',
+      template: '<hr/><div><strong>Execs:</strong></div>',
     },
     {
       key: 'execs',
@@ -180,13 +182,31 @@ export class SimulationFormComponent {
       },
     },
     {
-      className: 'col-sm-4',
-      type: 'input',
-      key: 'duration',
-      templateOptions: {
-        label: 'Duration:',
-        required: true,
-      },
+      fieldGroupClassName: 'grid-row grid-gap-md',
+      fieldGroup: [
+        {
+          className: 'tablet:grid-col-2',
+          type: 'input',
+          key: 'duration',
+          templateOptions: {
+            label: 'Duration',
+          },
+        },
+        {
+          className: 'tablet:grid-col-2',
+          key: 'time',
+          type: 'select',
+          templateOptions: {
+            label: 'Time',
+            options: [
+              { label: 'Minutes', value: 'minutes' },
+              { label: 'Seconds', value: 'seconds' },
+              { label: 'Miliseconds', value: 'miliseconds' }
+            ],
+            required: true
+          },
+        }
+      ],
     },
   ];
 
