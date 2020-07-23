@@ -11,6 +11,9 @@ import { SimulationService } from '../simulation.service';
   styleUrls: ['./simulation-form.component.scss']
 })
 export class SimulationFormComponent {
+
+  constructor( private simulationService: SimulationService) {}
+
   simulation: Simulation;
   form = new FormGroup({});
   model: any = {
@@ -73,7 +76,7 @@ export class SimulationFormComponent {
             },
           },
           {
-            key: 'requestTpe',
+            key: 'requestType',
             type: 'select',
             defaultValue: 'get',
             templateOptions: {
@@ -254,6 +257,12 @@ export class SimulationFormComponent {
     copy.rampUpDuration = copy.rampUpDuration + ' ' + copy.rampupTime;
     delete copy.rampupTime;
     console.log(copy);
+
+    this.simulationService.createSimulation(copy).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
   }
 
 

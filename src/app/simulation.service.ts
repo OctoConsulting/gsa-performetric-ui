@@ -11,7 +11,11 @@ constructor(private http: HttpClient) { }
  baseUrl = "http://localhost:8443/";  
 
  getAllSimulation(){
-   return this.http.get(this.baseUrl + "/gatling/v1/performance/getAllSimulations");
+   return this.http.get(this.baseUrl + "gatling/v1/performance/getAllSimulations");
+ }
+
+ createSimulation( simulationForm: any) {
+  return this.http.post(this.baseUrl + "gatling/v1/performance", simulationForm);
  }
 
 }
