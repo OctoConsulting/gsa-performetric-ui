@@ -1,11 +1,12 @@
-import { Exec } from './exec.model';
+import { Steps } from './exec.model';
 
 export class Simulation {
   simulationName?: string;
   baseUrl?: string;
-  execs?: Exec[];
-  constantConcurrentUsers?: number;
-  rampConcurrentUsersStart?: number;
-  rampConcurrentUsersEnd?: number;
-  duration?: number;
+  steps?: any[];
+  constantConcurrentUsers?: string;
+  rampConcurrentUsersStart?: string;
+  rampConcurrentUsersEnd?: string;
+  duration?: string;
+  rampUpDuration?: string;
 }
