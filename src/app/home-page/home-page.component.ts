@@ -22,6 +22,10 @@ export class HomePageComponent implements OnInit{
     this.route.params.subscribe(
       (params: Params) => {
         this.status = params.status;
+
+        setTimeout(() => {
+          this.status = 'none';
+      }, 5000);
       }
     );
 
