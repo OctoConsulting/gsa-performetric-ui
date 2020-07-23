@@ -21,8 +21,9 @@ import { FormlyModule } from '@ngx-formly/core';
 import { CommonModule } from '@angular/common';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { RepeatTypeComponent } from './repeat-section.type';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { SimulationService } from './simulation.service';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { RepeatTypeComponent } from './repeat-section.type';
     BrowserAnimationsModule,
     FontAwesomeModule,
     BrowserModule,
+    HttpClientModule,
     SamFooterModule,
     SamHeaderModule,
     AppRoutingModule,
@@ -53,7 +55,7 @@ import { RepeatTypeComponent } from './repeat-section.type';
       ],
     })
   ],
-  providers: [],
+  providers: [SimulationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

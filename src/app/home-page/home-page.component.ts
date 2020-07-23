@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SimulationService } from '../simulation.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +10,19 @@ export class HomePageComponent{
 
   public isCollapsedContent = true;
 
-  constructor() { }
+  constructor(private simulationService : SimulationService) { }
 
+  dataObj : any;
 
+  ngOnInit(){
+    this.getSimulation();
+  }
+
+  getSimulation(){
+    this.simulationService.getAllSimulation().subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
 }
