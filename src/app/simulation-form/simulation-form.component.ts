@@ -98,10 +98,7 @@ export class SimulationFormComponent implements OnInit {
             templateOptions: {
               label: 'Request Type',
               options: [
-                { label: 'GET', value: 'get' },
-                { label: 'POST', value: 'post' },
-                { label: 'PUT', value: 'put' },
-                { label: 'DELETE', value: 'delete' }
+                { label: 'GET', value: 'get' }
               ],
               required: true
             },
@@ -301,11 +298,16 @@ export class SimulationFormComponent implements OnInit {
       this.simulationService.executeSimulation(this.simulationId, this.scalaFileName).subscribe(
         data => {
           console.log(data);
+          console.log(data.ok);
           if (data.status === 200) {
+            console.log('Im Here');
             this.router.navigate(['/home', 'success']);
           } else{
             this.router.navigate(['/home', 'fail']);
           }
+        },err =>{
+          console.log('Im Error');
+          this.router.navigate(['/home', 'success']);
         }
       );
     }
