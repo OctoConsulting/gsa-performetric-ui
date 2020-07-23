@@ -28,10 +28,12 @@ export class ViewSimulationDetailsComponent implements OnInit {
           data => {
             console.log(data);
             this.simulation = data;
-            this.filePath = "../assets/" + this.simulation.simulationResultsFolderName + "/index.html";
-            this.filePath = this.sanitizer.bypassSecurityTrustResourceUrl(this.filePath);
-            this.reports = true;
-            console.log(this.filePath)
+            if(this.simulation.simulationResultsFolderName){
+              this.filePath = "/src/assets/" + this.simulation.simulationResultsFolderName + "/index.html";
+              this.filePath = this.sanitizer.bypassSecurityTrustResourceUrl(this.filePath);
+              this.reports = true;
+              console.log(this.filePath)
+            }
           }
         );
       }
