@@ -23,13 +23,16 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { RepeatTypeComponent } from './repeat-section.type';
 import { HttpClientModule } from '@angular/common/http';
 import { SimulationService } from './simulation.service';
+import { ViewSimulationDetailsComponent } from './view-simulation-details/view-simulation-details.component';
+import { SdsSearchResultListModule } from '@gsa-sam/components';
  
 @NgModule({
   declarations: [
     AppComponent,
     SimulationFormComponent,
     HomePageComponent,
-    RepeatTypeComponent
+    RepeatTypeComponent,
+    ViewSimulationDetailsComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -43,6 +46,7 @@ import { SimulationService } from './simulation.service';
     SdsToolbarModule,
     SdsAccordionModule,
     SdsFormlyModule,
+    SdsSearchResultListModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,10 @@ constructor(private http: HttpClient) { }
 
  getAllSimulation(){
    return this.http.get(this.baseUrl + "gatling/v1/performance/getAllSimulations");
+ }
+
+ getSimulationById(id: any) {
+   return this.http.get(this.baseUrl + 'gatling/v1/performance/simulation', {params: new HttpParams().set('id', id)});
  }
 
  createSimulation( simulationForm: any) {
