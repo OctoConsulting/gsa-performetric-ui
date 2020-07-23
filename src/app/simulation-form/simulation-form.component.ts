@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { Simulation } from './simulation-models/simulation.model';
 import { SimulationService } from '../simulation.service';
 
 @Component({
@@ -14,7 +13,6 @@ export class SimulationFormComponent {
 
   constructor( private simulationService: SimulationService) {}
 
-  simulation: Simulation;
   form = new FormGroup({});
   model: any = {
     steps: [{}],
