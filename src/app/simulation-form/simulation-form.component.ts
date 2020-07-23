@@ -247,12 +247,12 @@ export class SimulationFormComponent {
   ];
 
   onSubmit() {
-
-    console.log('printing:');
-    console.log(this.form.get('simulationName').value);
-    console.log(this.form.value);
-    let copy = JSON.parse(JSON.stringify(this.form.value));
-    //delete copy.durationTime;
+    const copy = JSON.parse(JSON.stringify(this.form.value));
+    copy.constantConncurrentUserDuration = copy.constantConncurrentUserDuration + ' ' + copy.durationTime;
+    delete copy.durationTime;
+    copy.rampUpDuration = copy.rampUpDuration + ' ' + copy.rampupTime;
+    delete copy.rampupTime;
+    console.log(copy);
   }
 
 
