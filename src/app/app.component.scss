@@ -1,0 +1,11 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+  flex-direction: column;
+}
+.wrapper {
+    min-height: 820px;
+}
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
+}

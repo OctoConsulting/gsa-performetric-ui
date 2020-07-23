@@ -14,8 +14,6 @@ export class HomePageComponent implements OnInit{
 
   constructor(private simulationService : SimulationService) { }
 
-  dataObj: any;
-
   ngOnInit() {
     this.getSimulation();
   }
