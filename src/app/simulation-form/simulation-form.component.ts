@@ -9,9 +9,13 @@ import { SimulationService } from '../simulation.service';
   templateUrl: './simulation-form.component.html',
   styleUrls: ['./simulation-form.component.scss']
 })
-export class SimulationFormComponent {
+export class SimulationFormComponent implements OnInit{
 
   constructor( private simulationService: SimulationService) {}
+  buttonText: string;
+  simulation: any;
+  simulationId: any;
+  scalaFileName: any;
 
   form = new FormGroup({});
   model: any = {
@@ -20,6 +24,9 @@ export class SimulationFormComponent {
     authHeader: [{}],
   };
   options: FormlyFormOptions = {
+    formState: {
+      addLoadInformation: false,
+    },
   };
   fields: FormlyFieldConfig[] = [
     {
@@ -176,6 +183,10 @@ export class SimulationFormComponent {
       },
     },
     {
+      className: 'section-label',
+      template: '<div><strong>Load Information:</strong></div>',
+    },
+    {
       className: 'col-sm-4',
       type: 'input',
       key: 'constantConncurrentUsers',
@@ -257,19 +268,40 @@ export class SimulationFormComponent {
     },
   ];
 
-  onSubmit() {
-    const copy = JSON.parse(JSON.stringify(this.form.value));
-    copy.constantConncurrentUserDuration = copy.constantConncurrentUserDuration + ' ' + copy.durationTime;
-    delete copy.durationTime;
-    copy.rampUpDuration = copy.rampUpDuration + ' ' + copy.rampupTime;
-    delete copy.rampupTime;
-    console.log(copy);
+  ngOnInit() {
+    this.buttonText = 'Generate';
+  }
 
-    this.simulationService.createSimulation(copy).subscribe(
-      data => {
-        console.log(data);
-      }
-    );
+  onSubmit() {
+    if (this.buttonText === 'Generate') {
+      const copy = JSON.parse(JSON.stringify(this.form.value));
+      copy.constantConncurrentUserDuration = copy.constantConncurrentUserDuration + ' ' + copy.durationTime;
+      delete copy.durationTime;
+      copy.rampUpDuration = copy.rampUpDuration + ' ' + copy.rampupTime;
+      delete copy.rampupTime;
+      console.log(copy);
+      this.simulationService.createSimulation(copy).subscribe(
+        data => {
+          this.simulation = data;
+          console.log(this.simulation);
+          if (this.simulation.simulationFileName) {
+            this.buttonText = 'Execute';
+            this.simulationId = this.simulation.id;
+            this.scalaFileName = this.simulation.simulationFileName;
+          }
+        }
+      );
+    } 
+
+    if (this.buttonText === 'Execute') {
+      console.log(this.scalaFileName);
+      console.log(this.simulationId);
+      this.simulationService.executeSimulation(this.simulationId, this.scalaFileName).subscribe(
+        data => {
+          console.log(data);
+        }
+      );
+    }
   }
 
 

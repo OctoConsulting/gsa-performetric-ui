@@ -22,4 +22,11 @@ constructor(private http: HttpClient) { }
   return this.http.post(this.baseUrl + "gatling/v1/performance", simulationForm);
  }
 
+ executeSimulation (simulationId: any, scalaFileName: any) {
+  return this.http.get(this.baseUrl + '/gatling/v1/performance/invokeGatling',
+  {params: new HttpParams().set('simulationId', simulationId).set('scalaFileName', scalaFileName)});
+ }
+
+ 
+
 }
