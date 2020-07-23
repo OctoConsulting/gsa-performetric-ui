@@ -1,29 +1,50 @@
-<p>ID: {{simulation.id}}</p>
-<p>Simulation Name: {{simulation.simulationName}}</p>
-<p>BaseUrl: {{simulation.baseUrl}}</p>
-<p>Scenario Name: {{simulation.scenarioName}}</p>
-<p>Steps:</p>
+<div class = "form-pd">
+    <h2>Simulation Details </h2>
+<!-- <p>ID: {{simulation.id}}</p> -->
+<h3>Simulation Info</h3>
+<div class = "grid-row">
+    <span class = "grid-col-4"><span class = "font-txt">Simulation Name: </span> <span>{{simulation.simulationName}}</span></span>
+    <span class = "grid-col-4"><span class = "font-txt">BaseUrl: </span><span>{{simulation.baseUrl}}</span></span>
+    <span class = "grid-col-4"><span class = "font-txt">Scenario Name: </span><span>{{simulation.scenarioName}}</span></span>
+</div>
+<h3>Steps</h3>
 <div *ngFor='let step of simulation.steps'>
-    <p>Execution Name: {{step.executionName}}</p>
-    <p>Request Type: {{step.requestType}}</p>
-    <p>Route: {{step.route}}</p>
-    <p>Query Params:</p>
-    <div *ngFor='let queryParam of step.queryParams'>
-        <p>Parameter Name: {{queryParam.paramName}}</p>
-        <p>Parameter Value: {{queryParam.paramValue}}</p>
+    <div class = "grid-row">
+        <span class = "grid-col-4"><span class = "font-txt">Execution Name: </span><span>{{step.executionName}}</span></span>
+        <span class = "grid-col-4"><span class = "font-txt">Request Type: </span><span> {{step.requestType}}</span></span>
+        <span class = "grid-col-4"><span class = "font-txt">Route: </span><span>{{step.route}}</span></span>
     </div>
-    <p>Authorization Headers:</p>
+    
+    <div class = "grid-row query-pd">Query Params</div>
+    <div *ngFor='let queryParam of step.queryParams'>
+        <div class = "grid-row data-pd">   
+            <span class = "grid-col-4">Parameter Key: {{queryParam.paramName}}</span>
+            <span class = "grid-col-4">Parameter Value: {{queryParam.paramValue}}</span>
+        </div>
+    </div>
+    <div class = "grid-row query-pd">Authorization Headers</div>
     <div *ngFor='let authHeader of step.authHeader'>
-        <p>Authorization Key: {{authHeader.headerKey}}</p>
-        <p>Authorization Value: {{authHeader.headerValue}}</p>
+        <div class = "grid-row data-pd"> 
+            <span class = "grid-col-4">Authorization Key: {{authHeader.headerKey}}</span>
+            <span class = "grid-col-4">Authorization Value: {{authHeader.headerValue}}</span>
+        </div>
     </div>
     <p>Pause: {{step.pause}}</p>
 </div>
-<p>Constant Concurrent Users: {{simulation.constantConncurrentUsers}}</p>
-<p>Constant Concurrent User Duration: {{simulation.constantConncurrentUserDuration}}</p>
-<p>Ramp Concurrent Users Start: {{simulation.rampConcurrentUsersStart}} </p>
-<p>Ramp Concurrent Users End: {{simulation.rampUpDuration}}</p>
+<h3>Load Applied</h3>
+
+<div class = "grid-row" style = "padding-bottom: 0.5em;">
+    <span class = "grid-col-4"><span class = "font-txt">Constant Concurrent Users: </span> {{simulation.constantConncurrentUsers}}</span>
+    <span class = "grid-col-4"><span class = "font-txt">Constant Concurrent User Duration: </span> {{simulation.constantConncurrentUserDuration}}</span>
+</div>
+<div class = "grid-row">
+    <span class = "grid-col-4"><span class = "font-txt">Ramp Concurrent Users Start:</span> {{simulation.rampConcurrentUsersStart}} </span>
+    <span class = "grid-col-4"><span class = "font-txt">Ramp Concurrent Users End: </span> {{simulation.rampConcurrentUsersEnd}}</span>
+    <span class = "grid-col-4"><span class = "font-txt">Ramp Concurrent Users Duration: </span> {{simulation.rampUpDuration}}</span>
+</div>
 <p>Processing Status: {{simulation.processingStatus}}</p>
 
-<iframe id="serviceFrameSend" src="../assets/fhsim-2054877255-1595464146715/index.html" width="1500" height="1500"  frameborder="0"></iframe> 
+ <iframe id="serviceFrameSend" [src]="filePath" width="1500" height="1500"  frameborder="0"></iframe>
 
+
+</div>
