@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Simulation } from './simulation-models/simulation.model';
+import { SimulationService } from '../simulation.service';
 
 @Component({
   selector: 'app-simulation-form',
