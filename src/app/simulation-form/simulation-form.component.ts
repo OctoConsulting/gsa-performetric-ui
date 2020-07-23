@@ -3,15 +3,17 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { SimulationService } from '../simulation.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-simulation-form',
   templateUrl: './simulation-form.component.html',
   styleUrls: ['./simulation-form.component.scss']
 })
-export class SimulationFormComponent implements OnInit{
+export class SimulationFormComponent implements OnInit {
 
-  constructor( private simulationService: SimulationService) {}
+  constructor( private simulationService: SimulationService, private router: Router) {}
   buttonText: string;
   simulation: any;
   simulationId: any;
@@ -31,7 +33,7 @@ export class SimulationFormComponent implements OnInit{
   fields: FormlyFieldConfig[] = [
     {
       className: 'section-label',
-      template: '<div><strong>Simulation Info:</strong></div>',
+      template: '<div><strong>Simulation Info</strong></div>',
     },
     {
       key: 'simulationName',
@@ -63,7 +65,7 @@ export class SimulationFormComponent implements OnInit{
     },
     {
       className: 'section-label test',
-      template: '<br><br><div><strong>Performance Steps:</strong></div><br>',
+      template: '<br><br><div><strong>Performance Steps</strong></div><br>',
       templateOptions: {
         attributes: {
           
@@ -75,7 +77,7 @@ export class SimulationFormComponent implements OnInit{
       type: 'repeat',
       name: 'exec',
       templateOptions: {
-        label: 'Execs:',
+        label: 'Execs',
         addText: 'Add Exec',
       },
       fieldArray: {
@@ -85,7 +87,7 @@ export class SimulationFormComponent implements OnInit{
             type: 'input',
             key: 'executionName',
             templateOptions: {
-              label: 'Execution Name:',
+              label: 'Execution Name',
               required: true,
             },
           },
@@ -109,7 +111,7 @@ export class SimulationFormComponent implements OnInit{
             key: 'route',
             className: 'col-sm-4',
             templateOptions: {
-              label: 'Route:',
+              label: 'Route',
               required: true
             },
           },
@@ -118,7 +120,7 @@ export class SimulationFormComponent implements OnInit{
             type: 'repeat',
             name: 'Query Param',
             templateOptions: {
-              label: 'Query Params:',
+              label: 'Query Params',
               addText: 'Add Query Parameter',
             },
             fieldArray: {
@@ -128,7 +130,7 @@ export class SimulationFormComponent implements OnInit{
                   type: 'input',
                   key: 'paramName',
                   templateOptions: {
-                    label: 'Parameter Name:'
+                    label: 'Parameter Name'
                   },
                 },
                 {
@@ -136,7 +138,7 @@ export class SimulationFormComponent implements OnInit{
                   type: 'input',
                   key: 'paramValue',
                   templateOptions: {
-                    label: 'Parameter Value:'
+                    label: 'Parameter Value'
                   },
                 },
               ],
@@ -147,7 +149,7 @@ export class SimulationFormComponent implements OnInit{
             type: 'repeat',
             name: 'Authorization Header',
             templateOptions: {
-              label: 'Authorization Header:',
+              label: 'Authorization Header',
               addText: 'Add Authorization Header',
             },
             fieldArray: {
@@ -157,7 +159,7 @@ export class SimulationFormComponent implements OnInit{
                   type: 'input',
                   key: 'headerKey',
                   templateOptions: {
-                    label: 'Header Key:'
+                    label: 'Header Key'
                   },
                 },
                 {
@@ -165,7 +167,7 @@ export class SimulationFormComponent implements OnInit{
                   type: 'input',
                   key: 'headerValue',
                   templateOptions: {
-                    label: 'Header Value:'
+                    label: 'Header Value'
                   },
                 },
               ],
@@ -176,7 +178,7 @@ export class SimulationFormComponent implements OnInit{
             type: 'input',
             key: 'pause',
             templateOptions: {
-              label: 'Pause:',
+              label: 'Pause',
             },
           },
         ],
@@ -191,7 +193,7 @@ export class SimulationFormComponent implements OnInit{
       type: 'input',
       key: 'constantConncurrentUsers',
       templateOptions: {
-        label: 'Constant Concurrent Users:',
+        label: 'Constant Concurrent Users',
         required: true,
       },
     },
@@ -227,7 +229,7 @@ export class SimulationFormComponent implements OnInit{
       type: 'input',
       key: 'rampConcurrentUsersStart',
       templateOptions: {
-        label: 'Constant Concurrent Users Start:',
+        label: 'Constant Concurrent Users Start',
         required: true,
       },
     },
@@ -236,7 +238,7 @@ export class SimulationFormComponent implements OnInit{
       type: 'input',
       key: 'rampConcurrentUsersEnd',
       templateOptions: {
-        label: 'Constant Concurrent Users End:',
+        label: 'Constant Concurrent Users End',
         required: true,
       },
     },

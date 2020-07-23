@@ -23,8 +23,10 @@ constructor(private http: HttpClient) { }
  }
 
  executeSimulation (simulationId: any, scalaFileName: any) {
-  return this.http.get(this.baseUrl + '/gatling/v1/performance/invokeGatling',
-  {params: new HttpParams().set('simulationId', simulationId).set('scalaFileName', scalaFileName)});
+   let searchParams = new HttpParams();
+   searchParams = searchParams.append('simulationId', simulationId);
+   searchParams = searchParams.append('scalaFileName', scalaFileName);
+   return this.http.post(this.baseUrl + '/gatling/v1/performance/invokeGatling', {params: searchParams});
  }
 
  
