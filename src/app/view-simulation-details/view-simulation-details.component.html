@@ -1,0 +1,28 @@
+<p>ID: {{simulation.id}}</p>
+<p>Simulation Name: {{simulation.simulationName}}</p>
+<p>BaseUrl: {{simulation.baseUrl}}</p>
+<p>Scenario Name: {{simulation.scenarioName}}</p>
+<p>Steps:</p>
+<div *ngFor='let step of simulation.steps'>
+    <p>Execution Name: {{step.executionName}}</p>
+    <p>Request Type: {{step.requestType}}</p>
+    <p>Route: {{step.route}}</p>
+    <p>Query Params:</p>
+    <div *ngFor='let queryParam of step.queryParams'>
+        <p>Parameter Name: {{queryParam.paramName}}</p>
+        <p>Parameter Value: {{queryParam.paramValue}}</p>
+    </div>
+    <p>Authorization Headers:</p>
+    <div *ngFor='let authHeader of step.authHeader'>
+        <p>Authorization Key: {{authHeader.headerKey}}</p>
+        <p>Authorization Value: {{authHeader.headerValue}}</p>
+    </div>
+    <p>Pause: {{step.pause}}</p>
+</div>
+<p>Constant Concurrent Users: {{simulation.constantConncurrentUsers}}</p>
+<p>Constant Concurrent User Duration: {{simulation.constantConncurrentUserDuration}}</p>
+<p>Ramp Concurrent Users Start: {{simulation.rampConcurrentUsersStart}} </p>
+<p>Ramp Concurrent Users End: {{simulation.rampUpDuration}}</p>
+<p>Processing Status: {{simulation.processingStatus}}</p>
+<p>File Name: {{simulation.simulationFileName}}</p>
+

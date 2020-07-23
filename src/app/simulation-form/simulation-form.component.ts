@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { Simulation } from './simulation-models/simulation.model';
 import { SimulationService } from '../simulation.service';
 
 @Component({
@@ -11,7 +10,9 @@ import { SimulationService } from '../simulation.service';
   styleUrls: ['./simulation-form.component.scss']
 })
 export class SimulationFormComponent {
-  simulation: Simulation;
+
+  constructor( private simulationService: SimulationService) {}
+
   form = new FormGroup({});
   model: any = {
     steps: [{}],
@@ -73,7 +74,7 @@ export class SimulationFormComponent {
             },
           },
           {
-            key: 'requestTpe',
+            key: 'requestType',
             type: 'select',
             defaultValue: 'get',
             templateOptions: {
@@ -248,12 +249,18 @@ export class SimulationFormComponent {
   ];
 
   onSubmit() {
+    const copy = JSON.parse(JSON.stringify(this.form.value));
+    copy.constantConncurrentUserDuration = copy.constantConncurrentUserDuration + ' ' + copy.durationTime;
+    delete copy.durationTime;
+    copy.rampUpDuration = copy.rampUpDuration + ' ' + copy.rampupTime;
+    delete copy.rampupTime;
+    console.log(copy);
 
-    console.log('printing:');
-    console.log(this.form.get('simulationName').value);
-    console.log(this.form.value);
-    let copy = JSON.parse(JSON.stringify(this.form.value));
-    //delete copy.durationTime;
+    this.simulationService.createSimulation(copy).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
   }
 
 

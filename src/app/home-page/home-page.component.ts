@@ -6,24 +6,24 @@ import { SimulationService } from '../simulation.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent{
+export class HomePageComponent implements OnInit{
 
   public isCollapsedContent = true;
 
+  simulations: any;
+
   constructor(private simulationService : SimulationService) { }
 
-  dataObj : any;
-
-  ngOnInit(){
+  ngOnInit() {
     this.getSimulation();
   }
 
-  getSimulation(){
+  getSimulation() {
     this.simulationService.getAllSimulation().subscribe(
       data => {
-        this.dataObj = data;
-        console.log(data);
+        this.simulations = data;
+        console.log(this.simulations);
       }
-    )
+    );
   }
 }
