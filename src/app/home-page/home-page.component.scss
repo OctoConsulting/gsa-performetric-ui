@@ -1,0 +1,60 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width : 30%
+}
+
+tr:nth-child(even) {
+  background-color: lightgrey;
+  width: 100%;
+}
+
+.btn-color{
+  background-color: #5994f6 !important; 
+}
+
+
+.alert-fail {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+}
+
+.alert-success {
+  padding: 20px;
+  background-color: #70e17b;
+  color: #162e51;
+  text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: white;
+}
+
+.btn-size{
+  
+  width: 25em;
+  height: 2.5em;  
+
+}
+
+
