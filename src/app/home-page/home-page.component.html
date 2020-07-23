@@ -3,10 +3,10 @@
   <h2>A tool to perform load testing on any REST endpoint</h2>
 </div>
 
-
+<div>
 <br>
-<hr>
-<h3 style="margin-left:2em">Submit new scenario's for simulation</h3>
+
+<!--<h3 class="text-center" style="margin-left:2em">Submit new scenario's for simulation</h3>-->
 <div class="text-center">
   <button type="button"
   class="usa-button text-center"
@@ -19,9 +19,9 @@
 </div>
 <br>
 <br>
+</div>
 
-<hr>
-<h3 style="margin-left:2em">View Results of previous scenarios</h3>
+<h3 class="text-center" style="margin-left:2em">View Results of previous scenarios</h3>
 <table class="text-center" style="width:75%;margin-left: 12em;">
   <tr >
     <th >Simulation Name</th>
@@ -33,7 +33,7 @@
     <td >{{simulation.simulationName}}</td>
     <td >{{simulation.scenarioName}}</td>
     <td >{{simulation.processingStatus}}</td>
-    <td ><button type="button" class="usa-button text-center btn-color" [routerLink]="['/view-details', simulation.id]">Details</button></td>
+    <td ><button type="button" class="usa-button text-center" [routerLink]="['/view-details', simulation.id]">Details</button></td>
   </tr>
 </table>
 

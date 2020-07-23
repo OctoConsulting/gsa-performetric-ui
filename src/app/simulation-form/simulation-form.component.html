@@ -1,8 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(model)">  
+<div class = form-pd>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(model)">  
     <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-    <div>
+    <div style = "margin-top:2.5em">
       <button type="submit" class="usa-button text-center" [disabled]="!form.valid"> Submit </button>
       <button type="button" class="usa-button usa-button--base" routerLink="/"> Cancel </button>
     </div>
     
   </form>
+</div>

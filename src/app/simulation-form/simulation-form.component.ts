@@ -23,6 +23,10 @@ export class SimulationFormComponent {
   };
   fields: FormlyFieldConfig[] = [
     {
+      className: 'section-label',
+      template: '<div><strong>Simulation Info:</strong></div>',
+    },
+    {
       key: 'simulationName',
       type: 'input',
       templateOptions: {
@@ -51,8 +55,13 @@ export class SimulationFormComponent {
       },
     },
     {
-      className: 'section-label',
-      template: '<hr/><div><strong>Execs:</strong></div>',
+      className: 'section-label test',
+      template: '<br><br><div><strong>Performance Steps:</strong></div><br>',
+      templateOptions: {
+        attributes: {
+          
+        }
+      },
     },
     {
       key: 'steps',
