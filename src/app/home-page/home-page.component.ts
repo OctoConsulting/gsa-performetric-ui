@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SimulationService } from '../simulation.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -12,10 +13,18 @@ export class HomePageComponent implements OnInit{
 
   simulations: any;
 
-  constructor(private simulationService : SimulationService) { }
+  status: any;
+
+  constructor(private simulationService : SimulationService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getSimulation();
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.status = params.status;
+      }
+    );
+
   }
 
   getSimulation() {

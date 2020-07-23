@@ -21,3 +21,33 @@ tr:nth-child(even) {
 }
 
 
+.alert-fail {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+}
+
+.alert-success {
+  padding: 20px;
+  background-color: #70e17b;
+  color: #162e51;
+  text-align: center;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+

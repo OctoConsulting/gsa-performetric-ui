@@ -6,6 +6,7 @@ import { ViewSimulationDetailsComponent } from './view-simulation-details/view-s
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
+  { path: 'home/:status', component: HomePageComponent },
   { path: 'new-simulation', component: SimulationFormComponent },
   { path: 'view-details/:id', component: ViewSimulationDetailsComponent }
 ];

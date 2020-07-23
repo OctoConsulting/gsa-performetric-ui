@@ -21,6 +21,16 @@
 <br>
 </div>
 
+<div class="alert-fail" *ngIf="status === 'fail'">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Execution Failed! Please try again.</strong>
+</div>
+
+<div class="alert-success" *ngIf="status === 'success'">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>You have succesfully executed your simulation!</strong>
+</div>
+
 <h3 class="text-center" style="margin-left:2em">View Results of previous scenarios</h3>
 <table class="text-center" style="width:75%;margin-left: 12em;">
   <tr >

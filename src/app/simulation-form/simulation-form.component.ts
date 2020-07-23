@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { SimulationService } from '../simulation.service';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 
 
 @Component({
@@ -293,7 +293,7 @@ export class SimulationFormComponent implements OnInit {
           }
         }
       );
-    } 
+    }
 
     if (this.buttonText === 'Execute') {
       console.log(this.scalaFileName);
@@ -301,6 +301,11 @@ export class SimulationFormComponent implements OnInit {
       this.simulationService.executeSimulation(this.simulationId, this.scalaFileName).subscribe(
         data => {
           console.log(data);
+          if (data.status === 200) {
+            this.router.navigate(['/home', 'success']);
+          } else{
+            this.router.navigate(['/home', 'fail']);
+          }
         }
       );
     }
