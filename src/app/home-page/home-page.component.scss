@@ -8,8 +8,16 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  width : 30%
 }
 
 tr:nth-child(even) {
-  background-color: #a8dbeb;
+  background-color: lightgrey;
+  width: 100%;
 }
+
+.btn-color{
+  background-color: #5994f6 !important; 
+}
+
+
