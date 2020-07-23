@@ -40,11 +40,6 @@ export class SimulationFormComponent implements OnInit {
       type: 'input',
       templateOptions: {
         label: 'Simulation Name',
-        //placeholder: 'Formly is terrific!',
-        required: true,
-        // attributes: {
-        //   style: 'padding: 10px, 0px, 10px'
-        // }
       },
     },
     {
@@ -66,11 +61,6 @@ export class SimulationFormComponent implements OnInit {
     {
       className: 'section-label test',
       template: '<br><br><div><strong>Performance Steps</strong></div><br>',
-      templateOptions: {
-        attributes: {
-          
-        }
-      },
     },
     {
       key: 'steps',
@@ -176,6 +166,8 @@ export class SimulationFormComponent implements OnInit {
             key: 'pause',
             templateOptions: {
               label: 'Pause',
+              type: 'number',
+              min: 0
             },
           },
         ],
@@ -222,21 +214,40 @@ export class SimulationFormComponent implements OnInit {
       ],
     },
     {
-      className: 'col-sm-4',
-      type: 'input',
-      key: 'rampConcurrentUsersStart',
-      templateOptions: {
-        label: 'Constant Concurrent Users Start',
-        required: true,
+      key: 'awesome',
+      type: 'checkbox',
+      templateOptions: { label: '' },
+      expressionProperties: {
+        'templateOptions.disabled': 'formState.awesomeIsForced',
+        'templateOptions.label': (model, formState) => {
+          if (formState.awesomeIsForced) {
+            return 'Add Additional Load Information';
+          } else {
+            return 'Add Additional Load Information';
+          }
+        },
       },
     },
     {
-      className: 'col-sm-4',
+      key: 'rampConcurrentUsersStart',
       type: 'input',
-      key: 'rampConcurrentUsersEnd',
+      expressionProperties: {
+        'templateOptions.disabled': 'formState.awesomeIsForced',
+      },
+      hideExpression: '!model.awesome',
       templateOptions: {
-        label: 'Constant Concurrent Users End',
-        required: true,
+        label: 'Ramp Up Concurrent Users Start',
+      },
+    },
+    {
+      key: 'rampConcurrentUsersEnd',
+      type: 'input',
+      expressionProperties: {
+        'templateOptions.disabled': 'formState.awesomeIsForced',
+      },
+      hideExpression: '!model.awesome',
+      templateOptions: {
+        label: 'Ramp Up Concurrent Users End',
       },
     },
     {
@@ -246,6 +257,10 @@ export class SimulationFormComponent implements OnInit {
           className: 'tablet:grid-col-3',
           type: 'input',
           key: 'rampUpDuration',
+          expressionProperties: {
+            'templateOptions.disabled': 'formState.awesomeIsForced',
+          },
+          hideExpression: '!model.awesome',
           templateOptions: {
             label: 'Ramp Up Duration',
           },
@@ -254,6 +269,10 @@ export class SimulationFormComponent implements OnInit {
           className: 'tablet:grid-col-2',
           key: 'rampupTime',
           type: 'select',
+          expressionProperties: {
+            'templateOptions.disabled': 'formState.awesomeIsForced',
+          },
+          hideExpression: '!model.awesome',
           templateOptions: {
             label: 'Time',
             options: [
