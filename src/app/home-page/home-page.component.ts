@@ -21,6 +21,7 @@ export class HomePageComponent{
   getSimulation(){
     this.simulationService.getAllSimulation().subscribe(
       data => {
+        this.dataObj = data;
         console.log(data);
       }
     )
